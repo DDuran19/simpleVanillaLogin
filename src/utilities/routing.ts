@@ -1,12 +1,17 @@
 import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
+import { RepositoryPathName } from "../types/constants";
 export function handleNavigation() {
     const path: string = window.location.pathname;
-    console.log(path);
-    if (path === "/" || path === "") {
+    console.log("ROUTING PATH: ", path);
+    if (
+        path === `/${RepositoryPathName}` ||
+        path === "" ||
+        path === `/${RepositoryPathName}/`
+    ) {
         showPage(Login);
-    } else if (path === "/Register") {
+    } else if (path === `/${RepositoryPathName}/Register`) {
         showPage(Register);
         //   } else if (path === '/contact') {
         //     showPage('Contact');

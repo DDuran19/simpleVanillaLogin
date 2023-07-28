@@ -2,6 +2,7 @@
 // It works, but you have to create a lot of things, so I will recreate this.
 
 import { inputText } from "../components/input";
+import { RepositoryPathName } from "../types/constants";
 const mainContainer: HTMLDivElement = document.createElement("div");
 
 const ImageContainer: HTMLDivElement = document.createElement("div");
@@ -13,13 +14,13 @@ const loginContainer: HTMLDivElement = document.createElement("div");
 const loginForm: HTMLFormElement = document.createElement("form");
 
 const myLogo: HTMLImageElement = document.createElement("img");
-myLogo.src = "denvieLogo.png";
+myLogo.src = "../denvieLogo.png";
 myLogo.width = 100;
 myLogo.height = 100;
 
 const registerNowLabel: HTMLAnchorElement = document.createElement("a");
 registerNowLabel.textContent = `Don't have an account? \nRegister now!`;
-registerNowLabel.setAttribute("href", "/Register");
+registerNowLabel.setAttribute("href", `${RepositoryPathName}/Register`);
 
 inputText(loginForm, "userNameInput", {
     labelText: "Username: ",
