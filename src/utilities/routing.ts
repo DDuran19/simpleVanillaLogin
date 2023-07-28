@@ -1,20 +1,31 @@
+import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
+import { Register } from "../pages/register";
 export function handleNavigation(){
     const path: string = window.location.pathname;
     console.log(path);
     if (path === '/' || path === '') {
         showPage(Login);} 
-    //     else if (path === '/about') {
-    //     showPage('About');
+        else if (path === '/Register') {
+        showPage(Register);
     //   } else if (path === '/contact') {
     //     showPage('Contact');
-    //   } else {
-    //     // Handle 404 - Page Not Found
-    //     showPage('NotFound');
-    //   }
+      } else {
+        // Handle 404 - Page Not Found
+        showPage(errorContainer);
+      }
 }
 export function showPage(page: HTMLDivElement){
-    document.body.appendChild(page);
+    // document.body.appendChild(page);
+    const currentPage = document.getElementById('mainContainer');
+
+    if (currentPage){
+        currentPage.replaceWith(page);
+    } else {
+        document.body.appendChild(page);
+    }
+
+    
 }
 
 // export function showPage(pageName: string) {

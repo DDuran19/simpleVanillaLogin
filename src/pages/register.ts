@@ -13,12 +13,15 @@ myLogo.height = 100;
 
 const userNameInput: HTMLInputElement = document.createElement('input');
 const passwordInput: HTMLInputElement = document.createElement('input');
-
+const confirmPasswordInput: HTMLInputElement = document.createElement('input');
 userNameInput.setAttribute('type','text');
 userNameInput.setAttribute("placeholder","Username");
 
 passwordInput.setAttribute('type','password');
 passwordInput.setAttribute("placeholder","Password");
+
+confirmPasswordInput.setAttribute('type','password');
+confirmPasswordInput.setAttribute('placeholder','Confirm Password');
 
 const registerNowLabel: HTMLLabelElement = document.createElement('label');
 registerNowLabel.textContent = `Don't have an account? \nRegister now!`;
@@ -29,6 +32,7 @@ loginButton.textContent = "Login"
 loginContainer.appendChild(myLogo);
 loginContainer.appendChild(userNameInput);
 loginContainer.appendChild(passwordInput);
+loginContainer.appendChild(confirmPasswordInput);
 loginContainer.appendChild(registerNowLabel);
 loginContainer.appendChild(loginButton);
 
@@ -39,6 +43,7 @@ ImageContainer.setAttribute("id","ImageContainer");
 loginContainer.setAttribute("id","loginContainer");
 userNameInput.setAttribute("id","userNameInput");
 passwordInput.setAttribute("id","passwordInput");
+confirmPasswordInput.setAttribute('id','confirmPasswordInput');
 registerNowLabel.setAttribute("id","registerNowLabel");
 
 // Classlists
@@ -57,4 +62,4 @@ loginButton.classList.add("btn-primary");
 // Add Children to Parent
 mainContainer.appendChild(ImageContainer);
 mainContainer.appendChild(loginContainer);
-export { mainContainer as Login }
+export { mainContainer as Register }
