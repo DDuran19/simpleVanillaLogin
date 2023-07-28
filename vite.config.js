@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 
-const BASE = "https://github.com/DDuran19/simpleVanillaLogin/";
+const BASE = "https://dduran19.github.io/simpleVanillaLogin/";
 
 export default defineConfig({
     base: process.env.NODE_ENV === "production" ? BASE : "/",
