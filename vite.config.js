@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
-const BASE = "/simpleVanillaLogin/";
-
+// const BASE = "/simpleVanillaLogin/";
+const BASE = "/";
 export default defineConfig({
     base: process.env.NODE_ENV === "production" ? BASE : "/",
     // base: BASE,
