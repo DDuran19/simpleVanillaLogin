@@ -1,19 +1,20 @@
 {
-  "name": "loginapp",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.31.0"
-  }
+    "name": "loginapp",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "gh-pages": "vite build && touch build/.nojekyll && npx gh-pages -d build -t true"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.2",
+        "vite": "^4.4.5"
+    },
+    "dependencies": {
+        "@supabase/supabase-js": "^2.31.0"
+    }
 }
