@@ -14,7 +14,8 @@ generateLorem1P(ImageContainer);
 const registerContainer: HTMLDivElement = document.createElement("div");
 const registerForm: HTMLFormElement = document.createElement("form");
 const myLogo: HTMLImageElement = document.createElement("img");
-myLogo.src = "../denvieLogo.png";
+myLogo.src =
+    "https://raw.githubusercontent.com/DDuran19/simpleVanillaLogin/main/public/denvieLogo.png";
 myLogo.width = 100;
 myLogo.height = 100;
 const alreadyHasAccount: HTMLAnchorElement = document.createElement("a");

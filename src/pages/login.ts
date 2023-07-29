@@ -17,7 +17,8 @@ const loginContainer: HTMLDivElement = document.createElement("div");
 export const loginForm: HTMLFormElement = document.createElement("form");
 
 const myLogo: HTMLImageElement = document.createElement("img");
-myLogo.src = "../denvieLogo.png";
+myLogo.src =
+    "https://raw.githubusercontent.com/DDuran19/simpleVanillaLogin/main/public/denvieLogo.png";
 myLogo.width = 100;
 myLogo.height = 100;
 
