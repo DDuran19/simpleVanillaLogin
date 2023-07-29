@@ -12,19 +12,23 @@ export const supabase = createClient(
 
 export type User = Database["public"]["Tables"]["simpleVanillaLogin"]["Row"];
 
-async function getData(): Promise<User[] | null> {
+async function getData(
+    username: string,
+    password: string
+): Promise<User[] | null> {
     const { data, error } = await supabase
         .from("simpleVanillaLogin")
-        .select("*");
+        .select("*")
+        .eq("username", username);
     if (error) {
         alert(`Something Went wrong! ${error.message}`);
     }
     if (data) {
-        return data as User[];
+        return data[0];
     }
     return null;
 }
-export const users = await getData();
+export const users = await getData("admin", "admin");
 
 export function login() {
     loginForm.onsubmit = () => {};

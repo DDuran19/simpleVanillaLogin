@@ -4,6 +4,7 @@ import "./styles/containers.css";
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
 import { RepositoryPathName } from "./types/constants.ts";
+import { users } from "./data/dataHandler.ts";
 const mainDiv: HTMLElement | null = document.getElementById("app");
 
 if (mainDiv) {
@@ -37,3 +38,4 @@ if (mainDiv) {
 } else {
     document.body.appendChild(errorContainer);
 }
+console.log(users);
