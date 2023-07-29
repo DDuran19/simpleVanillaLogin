@@ -1,5 +1,4 @@
-import { RepositoryPathName } from "../types/constants";
-import { handleNavigation } from "../utilities/routing";
+import { PushState } from "../utilities/pushState";
 
 const errorText: string = "This page does not exist, are you lost?";
 const errorContainer: HTMLDivElement = document.createElement("div");
@@ -16,12 +15,7 @@ const Home: HTMLAnchorElement = document.createElement("a");
 Home.textContent = errorText;
 Home.setAttribute("href", `/`);
 Home.addEventListener("click", (e) => {
-    e.preventDefault();
-    const href = Home.getAttribute("href") as string;
-    let newHref: string = href.replace(`${RepositoryPathName}`, "");
-    newHref = `/${RepositoryPathName}${newHref}`;
-    window.history.pushState("", "", newHref);
-    handleNavigation();
+    PushState(e, Home);
 });
 errorContainer.appendChild(Home);
 errorContainer.appendChild(error404image);

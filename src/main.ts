@@ -4,6 +4,7 @@ import "./styles/containers.css";
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
 import { getData } from "./data/dataHandler.ts";
+import { PushState } from "./utilities/pushState.ts";
 const mainDiv: HTMLElement | null = document.getElementById("app");
 
 if (mainDiv) {
@@ -19,13 +20,10 @@ if (mainDiv) {
     window.addEventListener("popstate", handleNavigation);
 
     // This will add event listener for internal links
-    const links = document.querySelectorAll("a[href]");
+    const links: NodeListOf<HTMLElement> = document.querySelectorAll("a[href]");
     links.forEach((link) => {
         link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const href = link.getAttribute("href") as string;
-            window.history.pushState("", "", href);
-            handleNavigation();
+            PushState(e, link);
         });
     });
 

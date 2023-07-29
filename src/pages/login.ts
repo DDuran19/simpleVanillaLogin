@@ -2,9 +2,8 @@
 // It works, but you have to create a lot of things, so I will recreate this.
 
 import { inputText } from "../components/input";
-import { RepositoryPathName } from "../types/constants";
 import { generateLorem1P } from "../utilities/loremIpsum";
-import { handleNavigation } from "../utilities/routing";
+import { PushState } from "../utilities/pushState";
 const mainContainer: HTMLDivElement = document.createElement("div");
 
 const ImageContainer: HTMLDivElement = document.createElement("div");
@@ -26,14 +25,7 @@ const registerNowLabel: HTMLAnchorElement = document.createElement("a");
 registerNowLabel.textContent = `Don't have an account? \nRegister now!`;
 registerNowLabel.setAttribute("href", `/Register`);
 registerNowLabel.addEventListener("click", (e) => {
-    e.preventDefault();
-    const href = registerNowLabel.getAttribute("href") as string;
-    let newHref: string = href.replace(`${RepositoryPathName}`, "");
-    console.log("BEFORE: ", newHref);
-    newHref = `/${RepositoryPathName}${newHref}`;
-    console.log("AFTER: ", newHref);
-    window.history.pushState("", "", newHref);
-    handleNavigation();
+    PushState(e, registerNowLabel);
 });
 
 inputText(loginForm, "userNameInput", {
