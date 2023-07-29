@@ -3,15 +3,14 @@ import "./styles/containers.css";
 
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
-import { RepositoryPathName } from "./types/constants.ts";
 import { getData } from "./data/dataHandler.ts";
 const mainDiv: HTMLElement | null = document.getElementById("app");
 
 if (mainDiv) {
     mainDiv.innerHTML = `<nav>
-  <a href="${RepositoryPathName}/">Login</a>
-  <a href="${RepositoryPathName}/Register">Register</a>
-  <a href="${RepositoryPathName}/UserDetails">User Details</a>
+  <a href="/">Login</a>
+  <a href="/Register">Register</a>
+  <a href="/UserDetails">User Details</a>
 </nav>
 <div id="content">
   </div>
@@ -25,11 +24,7 @@ if (mainDiv) {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const href = link.getAttribute("href") as string;
-            let newHref: string = href.replace(`${RepositoryPathName}`, "");
-            console.log("BEFORE: ", newHref);
-            newHref = `/${RepositoryPathName}${newHref}`;
-            console.log("AFTER: ", newHref);
-            window.history.pushState("", "", newHref);
+            window.history.pushState("", "", href);
             handleNavigation();
         });
     });
@@ -38,6 +33,10 @@ if (mainDiv) {
 } else {
     document.body.appendChild(errorContainer);
 }
-getData("admin").then((value) => {
-    console.log("ADMIN: ", value);
-});
+getData("admin")
+    .then((value) => {
+        console.log("ADMIN: ", value);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
