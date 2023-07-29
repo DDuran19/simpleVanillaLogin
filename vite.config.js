@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 
-const BASE = "/simpleVanillaLogin/";
+const BASE = process.env.GITHUB_ACTIONS ? "/simpleVanillaLogin/" : "/";
 export default defineConfig({
-    base: process.env.NODE_ENV === "production" ? BASE : "/",
+    base: BASE,
     build: {
         outDir: "./dist",
         emptyOutDir: true,
