@@ -1,5 +1,7 @@
 import { inputText } from "../components/input";
+import { RepositoryPathName } from "../types/constants";
 import { generateLorem1P } from "../utilities/loremIpsum";
+import { handleNavigation } from "../utilities/routing";
 
 const mainContainer: HTMLDivElement = document.createElement("div");
 
@@ -15,6 +17,17 @@ const myLogo: HTMLImageElement = document.createElement("img");
 myLogo.src = "../denvieLogo.png";
 myLogo.width = 100;
 myLogo.height = 100;
+const alreadyHasAccount: HTMLAnchorElement = document.createElement("a");
+alreadyHasAccount.textContent = `Already have an account?`;
+alreadyHasAccount.setAttribute("href", `/`);
+alreadyHasAccount.addEventListener("click", (e) => {
+    e.preventDefault();
+    const href = alreadyHasAccount.getAttribute("href") as string;
+    let newHref: string = href.replace(`${RepositoryPathName}`, "");
+    newHref = `/${RepositoryPathName}${newHref}`;
+    window.history.pushState("", "", newHref);
+    handleNavigation();
+});
 
 inputText(registerForm, "userNameInput", {
     labelText: "Username: ",
@@ -48,7 +61,7 @@ inputText(registerForm, "submitButton", {
     value: "Register",
     inputClassName: "btn btn-primary",
 });
-
+registerForm.appendChild(alreadyHasAccount);
 registerContainer.appendChild(myLogo);
 registerContainer.appendChild(registerForm);
 
