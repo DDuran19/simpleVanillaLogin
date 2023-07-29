@@ -3,15 +3,18 @@
 
 import { inputText } from "../components/input";
 import { RepositoryPathName } from "../types/constants";
+import { generateLorem1P } from "../utilities/loremIpsum";
+import { handleNavigation } from "../utilities/routing";
 const mainContainer: HTMLDivElement = document.createElement("div");
 
 const ImageContainer: HTMLDivElement = document.createElement("div");
 const Image: HTMLImageElement = document.createElement("img");
 ImageContainer.appendChild(Image);
 ImageContainer.classList.add("imageContainer");
+generateLorem1P(ImageContainer);
 
 const loginContainer: HTMLDivElement = document.createElement("div");
-const loginForm: HTMLFormElement = document.createElement("form");
+export const loginForm: HTMLFormElement = document.createElement("form");
 
 const myLogo: HTMLImageElement = document.createElement("img");
 myLogo.src = "../denvieLogo.png";
@@ -20,18 +23,30 @@ myLogo.height = 100;
 
 const registerNowLabel: HTMLAnchorElement = document.createElement("a");
 registerNowLabel.textContent = `Don't have an account? \nRegister now!`;
-registerNowLabel.setAttribute("href", `${RepositoryPathName}/Register`);
+registerNowLabel.setAttribute("href", `/Register`);
+registerNowLabel.addEventListener("click", (e) => {
+    e.preventDefault();
+    const href = registerNowLabel.getAttribute("href") as string;
+    let newHref: string = href.replace(`${RepositoryPathName}`, "");
+    console.log("BEFORE: ", newHref);
+    newHref = `/${RepositoryPathName}${newHref}`;
+    console.log("AFTER: ", newHref);
+    window.history.pushState("", "", newHref);
+    handleNavigation();
+});
 
 inputText(loginForm, "userNameInput", {
     labelText: "Username: ",
     placeholder: "Enter your username",
     required: true,
+    noLabel: true,
 });
 inputText(loginForm, "passwordInput", {
     labelText: "Password: ",
     type: "password",
     placeholder: "Enter your password",
     required: true,
+    noLabel: true,
 });
 loginForm.appendChild(registerNowLabel);
 

@@ -5,6 +5,7 @@ import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
 import { RepositoryPathName } from "./types/constants.ts";
 const mainDiv: HTMLElement | null = document.getElementById("app");
+
 if (mainDiv) {
     mainDiv.innerHTML = `<nav>
   <a href="${RepositoryPathName}/">Login</a>

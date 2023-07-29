@@ -2,8 +2,10 @@ import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
 import { RepositoryPathName } from "../types/constants";
+
 export function handleNavigation() {
     const path: string = window.location.pathname;
+
     console.log("ROUTING PATH: ", path);
     if (
         path === `/${RepositoryPathName}` ||
@@ -20,6 +22,7 @@ export function handleNavigation() {
         showPage(errorContainer);
     }
 }
+
 export function showPage(page: HTMLDivElement) {
     // document.body.appendChild(page);
     const currentPage = document.getElementById("mainContainer");
