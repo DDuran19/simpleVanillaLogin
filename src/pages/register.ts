@@ -1,4 +1,5 @@
 import { inputText } from "../components/input";
+import { register, resetResetLabel } from "../data/dataHandler";
 import { generateLorem1P } from "../utilities/loremIpsum";
 import { PushState } from "../utilities/pushState";
 
@@ -24,26 +25,26 @@ alreadyHasAccount.addEventListener("click", (e) => {
     PushState(e, alreadyHasAccount);
 });
 
-inputText(registerForm, "userNameInput", {
+const usernameInput = inputText(registerForm, "userNameInput", {
     labelText: "Username: ",
     placeholder: "Enter your username",
     required: true,
     noLabel: true,
 });
-inputText(registerForm, "descriptionInput", {
+const descriptionInput = inputText(registerForm, "descriptionInput", {
     labelText: "Description: ",
     placeholder: "Describe yourself",
     required: true,
     noLabel: true,
 });
-inputText(registerForm, "passwordInput", {
+const passwordInput = inputText(registerForm, "passwordInput", {
     labelText: "Password: ",
     type: "password",
     placeholder: "Enter your password",
     required: true,
     noLabel: true,
 });
-inputText(registerForm, "confirmPasswordInput", {
+const confirmPasswordInput = inputText(registerForm, "confirmPasswordInput", {
     labelText: "Confirm Password: ",
     type: "password",
     placeholder: "Confirm your password",
@@ -51,6 +52,8 @@ inputText(registerForm, "confirmPasswordInput", {
     noLabel: true,
 });
 
+export const registerResultLabel = document.createElement("p");
+registerForm.appendChild(registerResultLabel);
 inputText(registerForm, "submitButton", {
     type: "submit",
     value: "Register",
@@ -65,6 +68,7 @@ mainContainer.setAttribute("id", "mainContainer");
 ImageContainer.setAttribute("id", "ImageContainer");
 registerContainer.setAttribute("id", "registerContainer");
 registerForm.setAttribute("id", "registerForm");
+registerResultLabel.setAttribute("id", "resultLabel");
 
 // Classlists
 const maincontainerClasses: string[] = ["container", "main", "shadow"];
@@ -77,4 +81,11 @@ registerContainer.classList.add(...registerContainerClasses);
 // Add Children to Parent
 mainContainer.appendChild(ImageContainer);
 mainContainer.appendChild(registerContainer);
+
+//Event Listeners
+registerForm.onsubmit = register;
+usernameInput.onclick = resetResetLabel;
+descriptionInput.onclick = resetResetLabel;
+passwordInput.onclick = resetResetLabel;
+confirmPasswordInput.onclick = resetResetLabel;
 export { mainContainer as Register };

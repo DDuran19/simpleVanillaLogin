@@ -29,14 +29,28 @@ export async function checkIfUserNameExists(
     return null;
 }
 
-// export const users = getData("admin").then;
-
-export function resetButton(button: HTMLInputElement) {
-    button.disabled = false;
-    button.value = "Login";
+export async function addNewUser(
+    usernameValue: string,
+    passwordValue: string,
+    descriptionValue: string
+) {
+    const { error } = await supabase.from("simpleVanillaLogin").insert({
+        username: usernameValue,
+        password: passwordValue,
+        description: descriptionValue,
+    });
+    if (error) {
+        return error;
+    }
 }
-export function resetResetLabel(label: HTMLParagraphElement) {
-    label.innerText = "";
+
+export function resetButton(button: HTMLInputElement, text: string) {
+    button.disabled = false;
+    button.value = text;
+}
+export function resetResetLabel() {
+    const label = document.getElementById("resultLabel");
+    label!.innerText = "";
 }
 
 export const login = (event: SubmitEvent) => {
@@ -55,7 +69,7 @@ export const login = (event: SubmitEvent) => {
         .then((user: any) => {
             if (!user) {
                 resultLabel.innerText = "No such user!";
-                resetButton(loginButton);
+                resetButton(loginButton, "Login");
                 return;
             }
             const UserDetails = user;
@@ -73,12 +87,54 @@ export const login = (event: SubmitEvent) => {
                 resultLabel.innerText = "Successful Login!";
                 window.location.href = "UserDetails";
             }
-            resetButton(loginButton);
+            resetButton(loginButton, "Login");
         })
         .catch((error) => {
             resultLabel.innerText = `Something went wrong!`;
             console.log(error);
             loginButton.disabled = false;
         });
-    console.log(isLoggedIn);
 };
+
+export const register = (event: SubmitEvent) => {
+    event.preventDefault();
+    // let isLoggedIn: boolean = false;
+    const form = event.target as HTMLFormElement;
+    const usernameInput = form.elements[0] as HTMLInputElement;
+    const descriptionInput = form.elements[1] as HTMLInputElement;
+    const passwordInput = form.elements[2] as HTMLInputElement;
+    const confirmPasswordInput = form.elements[3] as HTMLInputElement;
+    const registerButton = form.elements[4] as HTMLInputElement;
+
+    const username: string = usernameInput.value;
+    const password: string = passwordInput.value;
+    const confirmPassword: string = confirmPasswordInput.value;
+    const description: string = descriptionInput.value;
+    const registerResultLabel = document.getElementById("resultLabel");
+
+    if (password !== confirmPassword) {
+        registerResultLabel!.innerText = "Passwords do not match!";
+        return;
+    }
+    registerButton.disabled = true;
+    registerButton.value = "Registering ...";
+    checkIfUserNameExists(username).then((user) => {
+        if (user) {
+            resetButton(registerButton, "Register");
+            registerResultLabel!.innerText = "User already Exists!";
+            return;
+        }
+        addNewUser(username, password, description)
+            .then(() => {
+                resetButton(registerButton, "Register");
+                window.location.href = "/";
+                resetButton(registerButton, "Register");
+                alert(`Registration successful for ${username}!`);
+            })
+            .catch((error) => {
+                registerResultLabel!.innerText = "Something Went Wrong!";
+                console.error(error);
+            });
+    });
+};
+export const initializeFunctions: boolean = true;

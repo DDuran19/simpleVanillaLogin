@@ -79,7 +79,6 @@ mainContainer.appendChild(loginContainer);
 
 // Event Listeners
 loginForm.onsubmit = login;
-userNameInput.onclick = () => resetResetLabel(resultLabel);
-passwordInput.onclick = () => resetResetLabel(resultLabel);
-console.log("USERNAME INPUT: ", userNameInput);
+userNameInput.onclick = resetResetLabel;
+passwordInput.onclick = resetResetLabel;
 export { mainContainer as Login };
