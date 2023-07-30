@@ -2,6 +2,7 @@
 // It works, but you have to create a lot of things, so I will recreate this.
 
 import { inputText } from "../components/input";
+import { login, resetResetLabel } from "../data/dataHandler";
 import { generateLorem1P } from "../utilities/loremIpsum";
 import { PushState } from "../utilities/pushState";
 const mainContainer: HTMLDivElement = document.createElement("div");
@@ -28,13 +29,13 @@ registerNowLabel.addEventListener("click", (e) => {
     PushState(e, registerNowLabel);
 });
 
-inputText(loginForm, "userNameInput", {
+const userNameInput = inputText(loginForm, "userNameInput", {
     labelText: "Username: ",
     placeholder: "Enter your username",
     required: true,
     noLabel: true,
 });
-inputText(loginForm, "passwordInput", {
+const passwordInput = inputText(loginForm, "passwordInput", {
     labelText: "Password: ",
     type: "password",
     placeholder: "Enter your password",
@@ -43,6 +44,8 @@ inputText(loginForm, "passwordInput", {
 });
 loginForm.appendChild(registerNowLabel);
 
+export const resultLabel = document.createElement("p");
+loginForm.appendChild(resultLabel);
 inputText(loginForm, "submitButton", {
     type: "submit",
     value: "Login",
@@ -58,6 +61,7 @@ ImageContainer.setAttribute("id", "ImageContainer");
 loginContainer.setAttribute("id", "loginContainer");
 loginForm.setAttribute("id", "loginForm");
 registerNowLabel.setAttribute("id", "registerNowLabel");
+resultLabel.setAttribute("id", "resultLabel");
 
 // Classlists
 const maincontainerClasses: string[] = ["container", "main", "shadow"];
@@ -73,4 +77,9 @@ registerNowLabel.classList.add("registerNowLabel");
 mainContainer.appendChild(ImageContainer);
 mainContainer.appendChild(loginContainer);
 
+// Event Listeners
+loginForm.onsubmit = login;
+userNameInput.onclick = () => resetResetLabel(resultLabel);
+passwordInput.onclick = () => resetResetLabel(resultLabel);
+console.log("USERNAME INPUT: ", userNameInput);
 export { mainContainer as Login };

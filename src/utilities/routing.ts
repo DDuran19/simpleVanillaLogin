@@ -5,13 +5,12 @@ import { Register } from "../pages/register";
 export function handleNavigation() {
     const path: string = window.location.pathname;
 
-    console.log("ROUTING PATH: ", path);
     if (path === "" || path === `/`) {
         showPage(Login);
     } else if (path === `/Register`) {
         showPage(Register);
-        //   } else if (path === '/contact') {
-        //     showPage('Contact');
+    } else if (path === "/UserDetails") {
+        showPage(errorContainer);
     } else {
         // Handle 404 - Page Not Found
         showPage(errorContainer);

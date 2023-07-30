@@ -40,6 +40,7 @@ ${label}
 <input ${inputClassText} type="${type}" id="${id}" name="${id}" ${placeholderText} ${autocomplete} ${value} ${required}/>
 `;
     parent.insertAdjacentHTML("beforeend", nodeString);
+    return parent.lastElementChild as HTMLInputElement;
 }
 
 export { inputText };

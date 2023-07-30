@@ -3,7 +3,6 @@ import "./styles/containers.css";
 
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
-import { getData } from "./data/dataHandler.ts";
 import { PushState } from "./utilities/pushState.ts";
 const mainDiv: HTMLElement | null = document.getElementById("app");
 
@@ -31,10 +30,3 @@ if (mainDiv) {
 } else {
     document.body.appendChild(errorContainer);
 }
-getData("admin")
-    .then((value) => {
-        console.log("ADMIN: ", value);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
