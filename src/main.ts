@@ -1,5 +1,6 @@
 import "./styles/style.css";
 import "./styles/containers.css";
+import "./styles/userDetails.css";
 
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";

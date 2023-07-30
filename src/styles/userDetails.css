@@ -1,0 +1,52 @@
+#idContainer {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px -50px 36px -28px inset;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 15% 5px;
+    min-width: 345px;
+}
+
+#idContainer:hover {
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+        rgba(255, 255, 255, 0.8) -6px -2px 16px 0px,
+        rgba(255, 255, 255, 0.35) 0px -50px 36px -28px inset;
+    transform: scale(1.05, 1.05);
+}
+#idContainer h1 {
+    padding: 20px;
+    padding-bottom: 0;
+}
+#idContainer h4 {
+    padding-bottom: 50px;
+}
+#QRimage {
+    width: 10rem;
+}
+#detailsContainer {
+    width: 300px;
+    height: max-content;
+    margin: 10px;
+}
+#detailsContainer p {
+    padding: 5px;
+}
+#detailsContainer .label {
+    text-align: left;
+    font-size: 0.75rem;
+}
+#detailsContainer .actual {
+    font-size: 1.5rem;
+}
+.actualDetails {
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

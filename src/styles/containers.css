@@ -24,6 +24,7 @@
     justify-content: center;
     max-width: 1280px;
     height: 720px;
+    padding: 2rem;
 }
 .errorContainer {
     display: flex;

@@ -86,6 +86,7 @@ export const login = (event: SubmitEvent) => {
                 isLoggedIn = true;
                 resultLabel.innerText = "Successful Login!";
                 window.location.href = "UserDetails";
+                sessionStorage.setItem("userDetails", JSON.stringify(user));
             }
             resetButton(loginButton, "Login");
         })

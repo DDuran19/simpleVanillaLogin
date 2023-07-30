@@ -7,16 +7,22 @@
     </head>
     <body>
         <div id="test"></div>
+        <div id="idContainer">
+            <img src="" alt="QR Code containing user details" id="QRimage" />
+            <div id="detailsContainer">
+                <p id="userNameLabel"></p>
+            </div>
+            <p id="descriptionLabel"></p>
+        </div>
+
         <script>
             const test = document.getElementById("test");
             const nodeString = `
 <label class for="ID">LABELLL</label>
 <input type="text" id="ID" name="ID" placeholder="sample"/>
 `;
-            test.insertAdjacentHTML("beforeend", nodeString);
-            test.insertAdjacentHTML("beforeend", nodeString);
-            test.insertAdjacentHTML("beforeend", nodeString);
-            test.insertAdjacentHTML("beforeend", nodeString);
+            // test.insertAdjacentHTML("beforeend", nodeString);
+            test.innerHTML = nodeString;
         </script>
     </body>
 </html>

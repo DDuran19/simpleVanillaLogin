@@ -1,6 +1,7 @@
 import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
+import { userDetails } from "../pages/userDetails";
 
 export function handleNavigation() {
     const path: string = window.location.pathname;
@@ -10,7 +11,7 @@ export function handleNavigation() {
     } else if (path === `/Register`) {
         showPage(Register);
     } else if (path === "/UserDetails") {
-        showPage(errorContainer);
+        showPage(userDetails);
     } else {
         // Handle 404 - Page Not Found
         showPage(errorContainer);
