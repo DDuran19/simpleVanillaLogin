@@ -1,7 +1,7 @@
 import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
-import { userDetails } from "../pages/userDetails";
+import { details } from "../pages/userDetails";
 
 export function handleNavigation() {
     const path: string = window.location.pathname;
@@ -11,7 +11,8 @@ export function handleNavigation() {
     } else if (path === `/Register`) {
         showPage(Register);
     } else if (path === "/UserDetails") {
-        showPage(userDetails);
+        showPage(details);
+        console.log("HANDLE NAVIGATION: ", details);
     } else {
         // Handle 404 - Page Not Found
         showPage(errorContainer);
@@ -19,12 +20,30 @@ export function handleNavigation() {
 }
 
 export function showPage(page: HTMLDivElement) {
-    // document.body.appendChild(page);
     const currentPage = document.getElementById("mainContainer");
     const app = document.getElementById("app") as HTMLDivElement;
 
     if (currentPage) {
         currentPage.replaceWith(page);
+        if (page === details) {
+            console.log("I was called");
+            const userDetailsString = sessionStorage.getItem("userDetails");
+            const actualUserDetails = JSON.parse(userDetailsString ?? "");
+            const userNameLabel = document.getElementById(
+                "userNameLabel"
+            ) as HTMLParagraphElement;
+            const descriptionLabel = document.getElementById(
+                "descriptionLabel"
+            ) as HTMLParagraphElement;
+            const signOut = document.getElementById(
+                "signOut"
+            ) as HTMLAnchorElement;
+            userNameLabel.innerText = actualUserDetails.username;
+            descriptionLabel.innerText = actualUserDetails.description;
+            signOut.onclick = () => {
+                sessionStorage.removeItem("userDetails");
+            };
+        }
     } else {
         app.appendChild(page);
     }
