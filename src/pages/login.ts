@@ -3,7 +3,6 @@
 
 import { inputText } from "../components/input";
 import { login, resetResetLabel } from "../data/dummyJson";
-import { generateLorem1P } from "../utilities/loremIpsum";
 import { PushState } from "../utilities/pushState";
 const mainContainer: HTMLDivElement = document.createElement("div");
 
@@ -11,7 +10,37 @@ const ImageContainer: HTMLDivElement = document.createElement("div");
 const Image: HTMLImageElement = document.createElement("img");
 ImageContainer.appendChild(Image);
 ImageContainer.classList.add("imageContainer");
-generateLorem1P(ImageContainer);
+const nodeString = `<h1>Simple Vanilla Login</h1>
+<h4>Created using pure vanilla Typescript and CSS</h4>
+<p> The first version of this simple webapp used Supabase, however, the database project needed to be taken down to give way to more major projects. It now uses dummyjson api for the users database. Here are some of the few that you can use.</p>
+<table border="1">
+<tr>
+  <th>Username</th>
+  <th>Password</th>
+</tr>
+<tr>
+  <td>atuny0</td>
+  <td>9uQFF1Lh</td>
+</tr>
+<tr>
+  <td>hbingley1</td>
+  <td>CQutx25i8r</td>
+</tr>
+<tr>
+  <td>rshawe2</td>
+  <td>OWsTbMUgFc</td>
+</tr>
+<tr>
+  <td>yraigatt3</td>
+  <td>sRQxjPfdS</td>
+</tr>
+<tr>
+  <td>kmeus4</td>
+  <td>aUTdmmmbH</td>
+</tr>
+</table>
+`;
+ImageContainer.insertAdjacentHTML("beforeend", nodeString);
 
 const loginContainer: HTMLDivElement = document.createElement("div");
 export const loginForm: HTMLFormElement = document.createElement("form");

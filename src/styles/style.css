@@ -80,3 +80,42 @@ input[type="password"] {
 input:focus {
     outline: 2px solid #646cff;
 }
+
+/* Style for the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the table horizontally */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+}
+
+th {
+    background-color: #646cff;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #444;
+}
+
+tr:nth-child(odd) {
+    background-color: #333;
+}
+
+td {
+    padding: 8px;
+    border: 1px solid #777;
+}
