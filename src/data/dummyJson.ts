@@ -1,4 +1,5 @@
 import { resultLabel } from "../pages/login";
+import { handleNavigation } from "../utilities/routing";
 
 export async function checkIfUserNameExists(username: string) {
     return await fetch(
@@ -16,6 +17,7 @@ export function resetResetLabel() {
 
 export const login = async (event: SubmitEvent) => {
     event.preventDefault();
+    event.stopPropagation();
     const form = event.target as HTMLFormElement;
     const usernameInput = form.elements[0] as HTMLInputElement;
     const passwordInput = form.elements[1] as HTMLInputElement;
@@ -39,7 +41,8 @@ export const login = async (event: SubmitEvent) => {
         if (user.username === username) {
             resultLabel.innerText = "Successful Login!";
             sessionStorage.setItem("userDetails", JSON.stringify(user));
-            window.location.href = "UserDetails";
+            window.history.pushState("", "", "/UserDetails");
+            handleNavigation();
         } else {
             throw new Error();
         }

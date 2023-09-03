@@ -1,6 +1,6 @@
 import { checkIfUserNameExists } from "../data/dummyJson";
 import { errorContainer } from "../error/error404";
-import { showPage } from "../utilities/routing";
+import { handleNavigation, showPage } from "../utilities/routing";
 
 const details = document.createElement("div");
 details.setAttribute("id", "mainContainer");
@@ -33,6 +33,7 @@ try {
     `;
     details.insertAdjacentHTML("beforeend", nodeString);
 } catch {
+    handleNavigation();
     showPage(errorContainer);
 }
 export { details };
