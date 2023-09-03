@@ -35,6 +35,7 @@ export async function showPage(page: HTMLDivElement) {
                 const roleElement = document.getElementById("RoleLabel");
                 const signOutElement = document.getElementById("signOut");
                 signOutElement?.addEventListener("click", (e) => {
+                    sessionStorage.clear();
                     PushState(e, signOutElement);
                 });
                 const userNameElement =

@@ -18,7 +18,7 @@ try {
                 <p class="actual" id="RoleLabel"> ${role}</p>
             </div>
         </div>
-    </div><a href="/" id="signOut" onclick="sessionStorage.clear()">Sign out</a>
+    </div><a href="/" id="signOut">Sign out</a>
     
     `;
     details.insertAdjacentHTML("beforeend", nodeString);
