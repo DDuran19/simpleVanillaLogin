@@ -5,7 +5,7 @@ import "./styles/userDetails.css";
 import { handleNavigation } from "./utilities/routing.ts";
 import { errorContainer } from "./error/error404.ts";
 import { PushState } from "./utilities/pushState.ts";
-import { initializeFunctions } from "./data/dataHandler.ts";
+import { initializeFunctions } from "./data/dummyJson.ts";
 initializeFunctions;
 const mainDiv: HTMLElement | null = document.getElementById("app");
 

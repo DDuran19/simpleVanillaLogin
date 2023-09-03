@@ -1,5 +1,5 @@
 import { inputText } from "../components/input";
-import { register, resetResetLabel } from "../data/dataHandler";
+import { register, resetResetLabel } from "../data/dummyJson";
 import { generateLorem1P } from "../utilities/loremIpsum";
 import { PushState } from "../utilities/pushState";
 

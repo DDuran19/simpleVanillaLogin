@@ -19,37 +19,20 @@ export function handleNavigation() {
     }
 }
 
-export function showPage(page: HTMLDivElement) {
-    const currentPage = document.getElementById("mainContainer");
-    const app = document.getElementById("app") as HTMLDivElement;
+export async function showPage(page: HTMLDivElement) {
+    try {
+        const currentPage = document.getElementById("mainContainer");
+        const app = document.getElementById("app") as HTMLDivElement;
 
-    if (currentPage) {
-        currentPage.replaceWith(page);
-        if (page === details) {
-            console.log("I was called");
-            const userDetailsString = sessionStorage.getItem("userDetails");
-            const actualUserDetails = JSON.parse(userDetailsString ?? "");
-            const userNameLabel = document.getElementById(
-                "userNameLabel"
-            ) as HTMLParagraphElement;
-            const descriptionLabel = document.getElementById(
-                "descriptionLabel"
-            ) as HTMLParagraphElement;
-            const signOut = document.getElementById(
-                "signOut"
-            ) as HTMLAnchorElement;
-            userNameLabel.innerText = actualUserDetails.username;
-            descriptionLabel.innerText = actualUserDetails.description;
-            signOut.onclick = () => {
-                sessionStorage.removeItem("userDetails");
-            };
+        if (currentPage) {
+            currentPage.replaceWith(page);
+            if (page === details) {
+                console.log("I was called");
+            }
+        } else {
+            app.appendChild(page);
         }
-    } else {
-        app.appendChild(page);
+    } catch {
+        showPage(errorContainer);
     }
 }
-
-// export function showPage(pageName: string) {
-//     const content: HTMLDivElement | null = document.getElementById('content') as HTMLDivElement;
-//     content.innerHTML = `<h1>${pageName}</h1>`;
-//   }

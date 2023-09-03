@@ -2,7 +2,7 @@
 // It works, but you have to create a lot of things, so I will recreate this.
 
 import { inputText } from "../components/input";
-import { login, resetResetLabel } from "../data/dataHandler";
+import { login, resetResetLabel } from "../data/dummyJson";
 import { generateLorem1P } from "../utilities/loremIpsum";
 import { PushState } from "../utilities/pushState";
 const mainContainer: HTMLDivElement = document.createElement("div");
@@ -78,7 +78,13 @@ mainContainer.appendChild(ImageContainer);
 mainContainer.appendChild(loginContainer);
 
 // Event Listeners
-loginForm.onsubmit = login;
+document.addEventListener("DOMContentLoaded", function () {
+    try {
+        const loginForm = document.getElementById("loginForm");
+        loginForm!.onsubmit = login;
+    } catch {}
+});
+
 userNameInput.onclick = resetResetLabel;
 passwordInput.onclick = resetResetLabel;
 export { mainContainer as Login };
