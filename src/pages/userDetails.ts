@@ -1,19 +1,9 @@
-import { checkIfUserNameExists } from "../data/dummyJson";
-import { errorContainer } from "../error/error404";
-import { handleNavigation, showPage } from "../utilities/routing";
-
 const details = document.createElement("div");
 details.setAttribute("id", "mainContainer");
 
 try {
-    const userDetailsString = sessionStorage.getItem("userDetails");
-    const actualUserDetails = JSON.parse(userDetailsString ?? "");
-    let username = actualUserDetails.username;
-    let role;
-    checkIfUserNameExists(actualUserDetails.username).then((user) => {
-        role = user.users[0].company.title;
-        document.getElementById("RoleLabel")!.innerHTML = role;
-    });
+    let username = "fetching from server...";
+    let role = "fetching from server...";
 
     let nodeString = `<div>
     <div id="idContainer">
@@ -32,8 +22,5 @@ try {
     
     `;
     details.insertAdjacentHTML("beforeend", nodeString);
-} catch {
-    handleNavigation();
-    showPage(errorContainer);
-}
+} catch {}
 export { details };

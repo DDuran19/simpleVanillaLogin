@@ -55,6 +55,7 @@ export const login = async (event: SubmitEvent) => {
     }
 };
 export const register = (event: SubmitEvent) => {
+    event.stopPropagation();
     event.preventDefault();
     // let isLoggedIn: boolean = false;
     const form = event.target as HTMLFormElement;

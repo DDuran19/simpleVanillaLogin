@@ -1,3 +1,4 @@
+import { checkIfUserNameExists } from "../data/dummyJson";
 import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
@@ -28,6 +29,20 @@ export async function showPage(page: HTMLDivElement) {
             currentPage.replaceWith(page);
             if (page === details) {
                 console.log("I was called");
+                const userDetailsString = sessionStorage.getItem("userDetails");
+                const actualUserDetails = JSON.parse(userDetailsString ?? "");
+                const roleElement = document.getElementById("RoleLabel");
+                const userNameElement =
+                    document.getElementById("userNameLabel");
+                const user = await checkIfUserNameExists(
+                    actualUserDetails.username
+                );
+                const role = user.users[0].company.title;
+                if (roleElement && userNameElement) {
+                    roleElement.innerHTML = role;
+                    userNameElement.innerHTML = actualUserDetails.username;
+                }
+                handleNavigation();
             }
         } else {
             app.appendChild(page);
