@@ -3,6 +3,7 @@ import { errorContainer } from "../error/error404";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
 import { details } from "../pages/userDetails";
+import { PushState } from "./pushState";
 
 export function handleNavigation() {
     const path: string = window.location.pathname;
@@ -32,6 +33,10 @@ export async function showPage(page: HTMLDivElement) {
                 const userDetailsString = sessionStorage.getItem("userDetails");
                 const actualUserDetails = JSON.parse(userDetailsString ?? "");
                 const roleElement = document.getElementById("RoleLabel");
+                const signOutElement = document.getElementById("signOut");
+                signOutElement?.addEventListener("click", (e) => {
+                    PushState(e, signOutElement);
+                });
                 const userNameElement =
                     document.getElementById("userNameLabel");
                 const user = await checkIfUserNameExists(
