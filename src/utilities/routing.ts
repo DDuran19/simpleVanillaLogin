@@ -14,7 +14,6 @@ export function handleNavigation() {
         showPage(Register);
     } else if (path === "/UserDetails") {
         showPage(details);
-        console.log("HANDLE NAVIGATION: ", details);
     } else {
         // Handle 404 - Page Not Found
         showPage(errorContainer);
@@ -29,7 +28,6 @@ export async function showPage(page: HTMLDivElement) {
         if (currentPage) {
             currentPage.replaceWith(page);
             if (page === details) {
-                console.log("I was called");
                 const userDetailsString = sessionStorage.getItem("userDetails");
                 const actualUserDetails = JSON.parse(userDetailsString ?? "");
                 const roleElement = document.getElementById("RoleLabel");
@@ -48,7 +46,6 @@ export async function showPage(page: HTMLDivElement) {
                     roleElement.innerHTML = role;
                     userNameElement.innerHTML = actualUserDetails.username;
                 }
-                handleNavigation();
             }
         } else {
             app.appendChild(page);
