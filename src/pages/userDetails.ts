@@ -12,6 +12,7 @@ try {
     let role;
     checkIfUserNameExists(actualUserDetails.username).then((user) => {
         role = user.users[0].company.title;
+        document.getElementById("RoleLabel")!.innerHTML = role;
     });
 
     let nodeString = `<div>
