@@ -16,7 +16,6 @@ export function resetResetLabel() {
 
 export const login = async (event: SubmitEvent) => {
     event.preventDefault();
-    let isLoggedIn: boolean = false;
     const form = event.target as HTMLFormElement;
     const usernameInput = form.elements[0] as HTMLInputElement;
     const passwordInput = form.elements[1] as HTMLInputElement;
@@ -38,7 +37,6 @@ export const login = async (event: SubmitEvent) => {
     console.log(user);
     try {
         if (user.username === username) {
-            isLoggedIn = true;
             resultLabel.innerText = "Successful Login!";
             sessionStorage.setItem("userDetails", JSON.stringify(user));
             window.location.href = "UserDetails";
