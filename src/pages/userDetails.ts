@@ -8,9 +8,11 @@ details.setAttribute("id", "mainContainer");
 try {
     const userDetailsString = sessionStorage.getItem("userDetails");
     const actualUserDetails = JSON.parse(userDetailsString ?? "");
-    const user = await checkIfUserNameExists(actualUserDetails.username);
-    const username = actualUserDetails.username;
-    const role = user.users[0].company.title;
+    let username = actualUserDetails.username;
+    let role;
+    checkIfUserNameExists(actualUserDetails.username).then((user) => {
+        role = user.users[0].company.title;
+    });
 
     let nodeString = `<div>
     <div id="idContainer">

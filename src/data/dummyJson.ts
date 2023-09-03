@@ -56,7 +56,6 @@ export const register = (event: SubmitEvent) => {
     // let isLoggedIn: boolean = false;
     const form = event.target as HTMLFormElement;
     const usernameInput = form.elements[0] as HTMLInputElement;
-    const descriptionInput = form.elements[1] as HTMLInputElement;
     const passwordInput = form.elements[2] as HTMLInputElement;
     const confirmPasswordInput = form.elements[3] as HTMLInputElement;
     const registerButton = form.elements[4] as HTMLInputElement;
@@ -64,7 +63,6 @@ export const register = (event: SubmitEvent) => {
     const username: string = usernameInput.value;
     const password: string = passwordInput.value;
     const confirmPassword: string = confirmPasswordInput.value;
-    const description: string = descriptionInput.value;
     const registerResultLabel = document.getElementById("resultLabel");
 
     if (password !== confirmPassword) {
